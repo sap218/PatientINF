@@ -6,91 +6,92 @@ Created on Mon May 11 14:36:23 2020
 @author: samantha
 """
 
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import json
 
+discussions = pd.read_csv('topics.tsv', sep='\t')
+
+topics = list(discussions['inflammation'])
+urls = list(discussions['patient.info link'])
 
 
 
-url = 'https://patient.info/forums/discuss/browse/arthritis-241'
+final_map = {}
 
-response = requests.get(url) # requesting
-soup = BeautifulSoup(response.text, 'html.parser') # souping
-
+final_map_keys = {}
 
 
-page_count = soup.findAll('option', attrs={'selected': 'selected'})
-counts = []
-for p in page_count:
-    p = p.text.strip() # strip() to remove starting and trailing
-    counts.append(p)    
+for url in urls:
+    #url = 'https://patient.info/forums/discuss/browse/cellulitis-391'
+    #url = 'https://patient.info/forums/discuss/browse/arthritis-241'
     
-page_count = []
-for word in counts[0].split('/'):
-   if word.isdigit():
-      page_count.append(int(word))
-page_count = page_count[1]
-
-
-
-
-
-
-threads_list = []
-
-for x in range(page_count):
-    payload = {'page':x}
-    response = requests.get(url, params=payload)
     
-    soup = BeautifulSoup(response.text, 'html.parser')
+    response = requests.get(url) # requesting
+    soup = BeautifulSoup(response.text, 'html.parser') # souping
     
     
     
-    thread = soup.findAll('h3', attrs={'class': 'post__title'})
-    
-    threads = {}
-    
-    for t in thread:
+    page_count = soup.findAll('option', attrs={'selected': 'selected'})
+    counts = []
+    for p in page_count:
+        p = p.text.strip() # strip() to remove starting and trailing
+        counts.append(p)    
         
-        link = t.findAll('a', attrs={'rel': 'discussion'})
-        for l in link:
-            u = "https://patient.info%s" % (l['href'])
+    page_count = []
+    for word in counts[0].split('/'):
+       if word.isdigit():
+          page_count.append(int(word))
+    page_count = page_count[1]
+    
+    
+    
+    
+
+    threads_list = []
+    
+    for x in range(page_count):
+        payload = {'page':x}
+        response = requests.get(url, params=payload)
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        
+        
+        thread = soup.findAll('h3', attrs={'class': 'post__title'})
+        
+        threads = {}
+        
+        for t in thread:
             
-        t = t.text.strip() 
+            link = t.findAll('a', attrs={'rel': 'discussion'})
+            for l in link:
+                u = "https://patient.info%s" % (l['href'])
+                
+            t = t.text.strip() 
+            
+            try:
+                threads[u] = t
+            except:
+                pass
+            
         
-        try:
-            threads[t] = u
-        except:
-            pass
+        threads_list.append(threads)
+        
+        
         
     
-    threads_list.append(threads)
-    
-    
-    
-
-finalMap = {}
-for d in threads_list:
-    finalMap.update(d)
+    list_of_topics = {}
+    for d in threads_list:
+        list_of_topics.update(d)
 
 
+    final_map[url] = list_of_topics
+
+    final_map_keys[url] = list(list_of_topics.keys())
 
 
 with open('topics_links.json', 'w') as fp:
-    json.dump(finalMap, fp, indent=4)
-
-
-
-del response
-del word
-del counts
-del p
-del threads
-del t 
-del thread
-del u     
-del d
-del link
-    
+    json.dump(final_map_keys, fp, indent=4)
     
