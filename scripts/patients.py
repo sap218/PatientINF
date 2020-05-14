@@ -18,7 +18,6 @@ from bs4 import BeautifulSoup
 
 
 
-
 with open('topics_links.json') as json_file:
     topics_urls = json.load(json_file)
 
@@ -29,6 +28,7 @@ finalMap = {}
 
 
 for topic in topics_urls:
+    category = str(topic)
     #print(topic) # cellulitis
     #print(topics_urls[topic]) # items in cellulitis
 
@@ -57,10 +57,7 @@ for topic in topics_urls:
         page_count = round(replies[0]/10)
         #page_count = page_count - 1
         if page_count == 0:
-            page_count == 2
-        else:
-            pass
-        
+            page_count = 1
         
         
         
@@ -88,16 +85,19 @@ for topic in topics_urls:
             date_posted = soup.find('time', attrs={'class': 'fuzzy'})
             date_posted = date_posted['datetime']
             thread['date posted'] = date_posted
-            
         
         thread['url'] = url
+        
         
         
         replies_list = []
         
         for x in range(page_count):
-            payload = {'order': 'oldest', 'page': x}
-            response = requests.get(url, params=payload)
+            if x == 0:
+                response = requests.get(url)
+            else:
+                payload = {'order': 'oldest', 'page': x}
+                response = requests.get(url, params=payload)
             
             soup = BeautifulSoup(response.text, 'html.parser')
             
@@ -181,21 +181,72 @@ for topic in topics_urls:
         topic_information.append(thread)
 
     
-    finalMap[topic] = topic_information
+    finalMap[category] = topic_information
+
+
+
+
+
+with open('patient-info_forums.json', 'w') as fp:
+    json.dump(finalMap, fp, indent=4)
+
+
+
+
 
 
 
 
 
 '''
+url = 'https://patient.info/forums/discuss/came-out-of-4-year-rea-remission-and-back-into-another-one--724709'
+
+
+
+
+
 payload = {'order': 'oldest', 'page': 0}
 response = requests.get(url, params=payload)
+
+
 
 soup = BeautifulSoup(response.text, 'html.parser')
    
 
-article_class = soup.findAll('article', attrs={'class':'post post__root'})
 
+
+topic = soup.find('article', attrs={'class': 'post mb-0'})
+
+thread = {}
+for info in topic: 
+    thread_title = soup.find('h1', attrs={'class': 'u-h1 post__title'}) 
+    thread_title = thread_title.text.strip() 
+    thread['title'] = thread_title
+    
+    user = soup.find('h5', attrs={'class': 'author__info'})
+    user = user.text.strip() 
+    thread['user'] = user
+    
+    thread_topic = soup.find('div', attrs={'class': 'post__content'})
+    for content in thread_topic:
+        content = soup.find('input', attrs={'class':'moderation-conent'})
+        content = content['value']
+    thread['post'] = content
+    
+    date_posted = soup.find('time', attrs={'class': 'fuzzy'})
+    date_posted = date_posted['datetime']
+    thread['date posted'] = date_posted
+
+thread['url'] = url
+
+
+
+
+
+
+
+
+article_class = soup.findAll('article', attrs={'class':'post post__root'})
 
 post_header_info = [] # replies contents
 
@@ -220,4 +271,7 @@ for article in article_class:
     info['post'] = post
         
     post_header_info.append(info)
+    
+
+thread['replies'] = post_header_info
 '''

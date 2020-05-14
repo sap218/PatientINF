@@ -76,6 +76,22 @@ for url in urls:
             except:
                 pass
             
+            
+            
+        for t in thread:
+            link = t.findAll('a', attrs={'rel': 'nofollow'})
+            for l in link:
+                u = "https://patient.info%s" % (l['href'])
+                
+            t = t.text.strip() 
+            
+            try:
+                threads[u] = t
+            except:
+                pass          
+            
+            
+            
         
         threads_list.append(threads)
         
