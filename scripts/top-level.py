@@ -11,7 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-discussions = pd.read_csv('topics.tsv', sep='\t')
+discussions = pd.read_csv('../topics.tsv', sep='\t')
 
 topics = list(discussions['inflammation'])
 urls = list(discussions['patient.info link'])
