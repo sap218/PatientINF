@@ -153,7 +153,10 @@ for topic in topics_urls:
                     
                     reply_content = r.find('div', attrs={'class':'post__content break-word'}) # comment
                     reply_post = reply_content.find('input', attrs={'type':'hidden', 'class':'moderation-conent'})
-                    reply_post = reply_post['value']
+                    if not reply_post:
+                        reply_post = None
+                    else:
+                        reply_post = reply_post['value']
                     further_info['post'] = reply_post
                     
                     
