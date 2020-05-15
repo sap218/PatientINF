@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 
 
 
-with open('topics_links.json') as json_file:
+with open('test_topics_links.json') as json_file:
     topics_urls = json.load(json_file)
 
 
@@ -44,6 +44,7 @@ for topic in topics_urls:
 
         
         response = requests.get(url) # requesting
+        
         soup = BeautifulSoup(response.text, 'html.parser') # souping
         
         
@@ -124,7 +125,10 @@ for topic in topics_urls:
                 #post = post_content.find('p')
                 #post = post.text.strip() 
                 post = post_content.find('input', attrs={'type':'hidden', 'class':'moderation-conent'})
-                post = post['value']
+                if not post:
+                    post = None
+                else:
+                    post = post['value']
                 info['post'] = post
                 
                 
