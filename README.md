@@ -14,3 +14,7 @@ extraction of [patient.info](https://patient.info/forums) forum discussions
 **answer: yes**
 
 "As the forum discussions are openly accessible then it is is fine if you are just analysing posts. However, please note we do not allow posting of surveys, research requests etc so please do not post direct questions to any users." - Patient team
+
+## version
+
+**10/02/2020** - works as of this date, in future website may change and so the script might not work
