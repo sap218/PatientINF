@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 
 
 
-with open('test_topics_links.json') as json_file:
+with open('chosen_topics_links.json') as json_file:
     topics_urls = json.load(json_file)
 
 
@@ -206,6 +206,10 @@ with open('patient-info_forums.json', 'w') as fp:
 
 
 '''
+
+# below is a single practice
+
+
 url = 'https://patient.info/forums/discuss/came-out-of-4-year-rea-remission-and-back-into-another-one--724709'
 
 

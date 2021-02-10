@@ -1,6 +1,10 @@
 # forum-patientinfo
-extraction of patient.info forum discussions
+extraction of [patient.info](https://patient.info/forums) forum discussions
 
-for the **ufo** ontology (looking into inflammation conditions)
+- used for the **ufo** ontology (looking into inflammatory conditions)
 
-e.g. https://patient.info/forums/discuss/browse/arthritis-241?page=0#group-discussions
+## how to use
+
+1. edit "chosen_topics.tsv" with the inflammatory topics and links you want to extract
+2. run "top-level.py", which will export "chosen_topics_links.json" - these will include all the links for the threads from your desired topics
+3. run "patients.py", which will export "patients-info_forums.json" - these will include all the threads (including title, posts, replies, users, dates, etc.) for all the thread links and topics you have chosen

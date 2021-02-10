@@ -11,7 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-discussions = pd.read_csv('test_topics.tsv', sep='\t')
+discussions = pd.read_csv('chosen_topics.tsv', sep='\t')
 
 topics = list(discussions['inflammation'])
 urls = list(discussions['patient.info link'])
@@ -108,6 +108,6 @@ for url in urls:
     final_map_keys[url] = list(list_of_topics.keys())
 
 
-with open('topics_links.json', 'w') as fp:
+with open('chosen_topics_links.json', 'w') as fp:
     json.dump(final_map_keys, fp, indent=4)
     
