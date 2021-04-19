@@ -1,8 +1,12 @@
 # forum-patientinfo
 
-[patient.info](https://patient.info/forums)
+**project**
 
-- used for the [**UFO**](https://github.com/sap218/ufo/) ontology (looking into inflammatory conditions)
+- extraction of forum from [patient.info](https://patient.info/forums)
+
+- using the tf-idf method from Braithwaite et al. (2020) we extract patient-preferred/layman terms and add to the [**UFO**](https://github.com/sap218/ufo/) ontology
+
+- application: using the [ClinicalBERT](https://github.com/kexinhuang12345/clinicalBERT) model on MIMIC-III clinical letters, we use to pretrain on inflammatory forum to observe differences in clinical and patient text
 
 ---
 
