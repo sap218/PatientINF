@@ -10,7 +10,7 @@
 
 ---
 
-## Forum extraction Script
+## forum extraction Script
 
 - in the `scripts/` directory
 
