@@ -1,14 +1,14 @@
-# forum-patientinfo
+# PatientBERT
 
 ### project
 
-- extraction of forum from [patient.info](https://patient.info/forums) and using the tf-idf method from Braithwaite et al. (2020) we extract patient-preferred/layman terms and add to the [**UFO**](https://github.com/sap218/ufo/) ontology
+- extraction of forum from [patient.info](https://patient.info/forums) and using the tf-idf method from Pendleton et al. (2021) we extract patient-preferred/layman terms and add to the [**COID**](https://github.com/sap218/coid/) ontology
 
 - application: using the [ClinicalBERT](https://github.com/kexinhuang12345/clinicalBERT) model on MIMIC-III clinical letters, we use to pretrain on inflammatory forum to observe differences in clinical and patient text
 
 ### word2vec model
 
-- in the `word2vec_model/` directory: `patient-forum_clinicalbert.bin` - dated: 28/01/2020
+- in the `embedding_model/` directory: `patientbert.bin` - dated: 28/01/2020
 - there will be another directory here `data_processing/` to show how to pretrain ClinicalBERT with the forum - so anyone can perform this method of a forum of their choice
 
 ### inflammation of interest
@@ -17,13 +17,7 @@
 
 ### forum extraction script
 
-- in the `forum_extraction_scripts/` directory
-
-**how to use**
-
-1. edit `chosen_topics.tsv` with the forum topics and links you want to extract, two forum examples already provided
-2. run `top-level.py`, which will export `chosen_topics_links.json` - these will include all the thread links for your desired forums
-3. run `patients.py`, this uses `chosen_topics_links.json` for all the thread links, it will export `patients-info_forums.json` - these will include all the threads (including title, posts, replies, users, dates, etc.) for all the thread links from the forum topics you have chosen
+- in the `forum_extraction_scripts/` directory includes the forum extraction instructions
 
 **am I allowed to do this? answer: yes**
 
