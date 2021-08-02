@@ -1,8 +1,8 @@
-# the file - date: Jan 28
+# the file - date: 28-01-2021
 
-* patient-forum_clinicalbert.bin
+* patientbert.bin
 
 
 # in data_processing (how to get the file in a format you want)
 * using format_fora.py with your forum which you downloaded and the output is fora_unformatted.txt
-* using the ClinicalBERT model (download from their git) and your unformatted forum data set, run training.py (remember to change appropriate file locations)
+* using the ClinicalBERT model (download via their git repo instructions) and your fora_unformatted.txt run training.py (remember to change appropriate file locations in the script)
