@@ -1,6 +1,8 @@
-# the file - date: 28-01-2021
+# the file - dated: 23-09-2021
 
-* patientbert.bin
+* patientforum.model
+
+* patientforum+clinical.model
 
 
 # in data_processing (how to get the file in a format you want)
