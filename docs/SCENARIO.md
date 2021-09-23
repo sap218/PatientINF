@@ -1,7 +1,7 @@
-# Inflammatory Manuscript
+**>> go back [Home](README.md)**
 
-### >> go back to [Home Page](README.md)
+**>> see [GitHub](https://github.com/sap218/patientFORUM)**
+
 
 ## About
-
 come back later!
