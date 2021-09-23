@@ -1,10 +1,9 @@
-# the file - dated: 23-09-2021
+## how to use
 
-* patientforum.model
+**version 23/09/2021**
 
-* patientforum+clinical.model
+- PatientFORUM: `patientforum.model`
+- PatientFORUM (+ClinicalBERT): `patientforum+clinical.model`
 
+- check `data_processing/` to train/retrain the models so anyone can perform this method of a forum of their choice, recreate our experiments, or expand upon our models and create a pull-request
 
-# in data_processing (how to get the file in a format you want)
-* using format_fora.py with your forum which you downloaded and the output is fora_unformatted.txt
-* using the ClinicalBERT model (download via their git repo instructions) and your fora_unformatted.txt run training.py (remember to change appropriate file locations in the script)
