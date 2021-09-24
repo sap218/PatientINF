@@ -38,7 +38,11 @@ If I find out this is being abused, I will make repository private/remove script
 ### 2. Training Word2Vec models (`embedding_model/` directory)
 - PatientFORUM: `patientforum.model`
 - PatientFORUM (+ClinicalBERT): `patientforum+clinical.model`
-- there will be another directory here `data_processing/` to show how to train/retrain the models so anyone can perform this method of a forum of their choice, recreate our experiments, or expand upon our models and create a pull-request
+- there will be another directory here `data_processing/` to show how to train/retrain the models so anyone can perform this method of a forum of their choice, recreate our experiments, or expand upon our models and create a pull-request.
+
+**Note**: we used the CaStLeS Bear services at University of Birmingham [7] to extract forum, and perform majority of analysis.
+
+*The computations described in this paper were performed using the University of Birmingham's BlueBEAR HPC service, which provides a High Performance Computing service to the University's research community. See `http://www.birmingham.ac.uk/bear` for more details.*
 
 **version 23/09/2021**
 
@@ -57,4 +61,6 @@ If I find out this is being abused, I will make repository private/remove script
 [5] Pendleton SC. Combined Ontology for Inflammatory Diseases COID. Zenodo. 2021. `https://doi.org/10.5281/zenodo.5524650`.
 
 [6] Pendleton SC, Slater LT, Karwath A, Gilbert RM, Davis N, Pesudovs K, Liu X, Denniston AK, Gkoutos GV, Braithwaite T. Development and application of the ocular immune-mediated inflammatory diseases ontology enhanced with synonyms from online patient support forum conversation. Computers in biology and medicine. 2021 135:104542.
+
+[7] Thompson SJ, Thompson SE, Cazier JB. CaStLeS (Compute and Storage for the Life Sciences): a collection of compute and storage resources for supporting research at the University of Birmingham. Zenodo. 2019 Jun 20.
 
