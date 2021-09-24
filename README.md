@@ -2,6 +2,12 @@
 
 **>> see [Website](https://sap218.github.io/patientFORUM) for more information about the project**
 
+- **PatientFORUM (+ClinicalBERT) `patientforum+clinical.model`**: retrained ClinicalBERT embedding model with patient forum conversation 
+
+- **PatientFORUM `patientforum.model`**: trained model from same forum conversations using same method/parameters as ClinicalBERT
+
+---
+
 ## Brief Overview
 
 1a. extracted patient forum conversations from [Patient.info](https://patient.info/forums) using inflammatory conditions, via Python package `BeautifulSoup` [1]
@@ -15,6 +21,8 @@
 3a. created a basic applicaiton ontology, Combined Ontology for Inflammatory Diseases ([COID](https://github.com/sap218/coid/)) [5] and expanded with the same tf-idf methods as Pendleton et al. (2021) [6] in addition to further expansion from the PatientFORUM (+ClinicalBERT) word embeddings
 
 3b. manuscript analysis: Pearson/Wilcoxon comparisons of all three models, clustering, and synonym analysis via ROC AUC
+
+---
 
 ### 1. Forum extraction script (`forum_extraction_scripts/` directory)
 - includes the forum extraction instructions, examples provided with inflammatory topics used for embeddings in `forum_extraction_scripts/inflammation_topics/` directory (includes the date of extraction of the inflammatory terms of interest used in the Word2Vec models)
@@ -34,7 +42,6 @@ If I find out this is being abused, I will make repository private/remove script
 
 **version 23/09/2021**
 
-
 ---
 
 ## References
@@ -50,3 +57,4 @@ If I find out this is being abused, I will make repository private/remove script
 [5] Pendleton SC. Combined Ontology for Inflammatory Diseases COID. Zenodo. 2021. `https://doi.org/10.5281/zenodo.5524650`.
 
 [6] Pendleton SC, Slater LT, Karwath A, Gilbert RM, Davis N, Pesudovs K, Liu X, Denniston AK, Gkoutos GV, Braithwaite T. Development and application of the ocular immune-mediated inflammatory diseases ontology enhanced with synonyms from online patient support forum conversation. Computers in biology and medicine. 2021 135:104542.
+
