@@ -49,12 +49,14 @@ If I find out this is being abused, I will make repository private/remove script
 
 **version 10/02/2020** - works as of this date, in future website may change and so the script might not work!
 
-### 2. Training Word2Vec models (`embedding_model/` directory)
-- PatientFORUM: `patientforum.model`
-- PatientFORUM (+ClinicalBERT): `patientforum+clinical.model`
-- there will be another directory here `data_processing/` to show how to train/retrain the models so anyone can perform this method of a forum of their choice, recreate our experiments, or expand upon our models and create a pull-request.
+### 2. Training fastText models (`embedding_models/` directory)
+- ...
 
-**version 23/09/2021**
+**Question: why not Word2Vec? Answer: n-grams**
+
+The ability to retain n-gram informtion in the embedding model is important, specifically for the Pearson correlation experiment.
+
+**version 01/03/2022**
 
 ---
 
