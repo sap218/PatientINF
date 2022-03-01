@@ -4,33 +4,37 @@
 
 | Abbrev. | Full name | Source |
 | --- | --- | --- |
-| PI | PatientINF | [Patient.info](https://patient.info/forums) forum board |
-| CB | ClinicalBERT | [ClinicalBERT](https://github.com/kexinhuang12345/clinicalBERT) [1] |
-| mBR | (modified) BioReddit | [COMETA corpus](https://github.com/cambridgeltl/cometa) [2] |
-
----
+| `PI` | PatientINF | [Patient.info](https://patient.info/forums) forum board |
+| `CB` | ClinicalBERT | [ClinicalBERT](https://github.com/kexinhuang12345/clinicalBERT) [1] |
+| `mBR` | (modified) BioReddit | [COMETA](https://github.com/cambridgeltl/cometa) corpus [2] |
 
 ## Brief Overview
 
 1a. extracted patient forum conversations from [Patient.info](https://patient.info/forums) using inflammatory conditions, via Python package `BeautifulSoup` [3].
 
-2a. downloaded [ClinicalBERT](https://github.com/kexinhuang12345/clinicalBERT) model - ClinicalBERT [1] is based on MIMIC-III [4] clinical letters of patients of intesive care.
+2a. downloaded `CB` model, which is based on MIMIC-III [4] clinical letters of patients of intesive care.
 
-2b. trained model **PatientINF** from forum conversations using same method/parameters as ClinicalBERT, via Python package `Gensim` [5].
+2b. trained model `PI` from forum conversations using same method/parameters as `CB` via Python package `Gensim` [5].
 
-2c. retraining ClincalBERT with same forum conversations to create **ClinicalBERT + PatientINF**.
+2c. retraining `CB` with same forum conversations to create `CB + PI`.
 
-3a. downloaded [COMETA](https://github.com/cambridgeltl/cometa) corpus - COMETA [2] is a subset of the BioReddit [6] corpus of 68 medical subreddits.
+3a. downloaded COMETA corpus, which is a subset of the BioReddit [6] data of 68 medical subreddits.
 
-3b. trained model **mPatientINF** using same method/parameters as ClinicalBERT, via Python package `Gensim` [5].
+3b. trained model `mBR` using same method/parameters as `CB`.
 
-3c. trained model **PatientINF** using same method/parameters as ClinicalBERT, via Python package `Gensim` [5].
+3c. trained model `PI` using same method/parameters as `CB`.
 
-analysis: Pearson/Wilcoxon comparisons of all three models, clustering, and synonym analysis via ROC AUC
+3d. retraining `mBR` with same forum conversations to create `mBR + PI`.
+
+4a. analysis: t-SNE clustering, Pearson correlation with physician, Wilcoxon comparisons, and synonym analysis via ROC AUC.
 
 **Additional**
 
-- Created a basic applicaiton ontology, Combined Ontology for Inflammatory Diseases ([COID](https://github.com/sap218/coid/)) [7] and expanded with the same tf-idf methods as Pendleton et al. (2021) [8] in addition to further expansion from the PatientFORUM (+ClinicalBERT) word embeddings
+- Created a basic applicaiton ontology, [Combined Ontology for Inflammatory Diseases](https://github.com/sap218/coid/) (`COID`) [7] and expanded with the same tf-idf methods as Pendleton et al. (2021) [8], using 14 inflammatory topics of interest. In addition to further expanding `COID` from the `CB + PI` word embeddings.
+
+**Note**: we used the CaStLeS Bear services at University of Birmingham [9] to extract forum, and perform majority of analysis.
+
+*The computations described in this paper were performed using the University of Birmingham's [BlueBEAR HPC](http://www.birmingham.ac.uk/bear) service, which provides a High Performance Computing service to the University's research community.*
 
 ---
 
@@ -50,17 +54,11 @@ If I find out this is being abused, I will make repository private/remove script
 - PatientFORUM (+ClinicalBERT): `patientforum+clinical.model`
 - there will be another directory here `data_processing/` to show how to train/retrain the models so anyone can perform this method of a forum of their choice, recreate our experiments, or expand upon our models and create a pull-request.
 
-**Note**: we used the CaStLeS Bear services at University of Birmingham [9] to extract forum, and perform majority of analysis.
-
-*The computations described in this paper were performed using the University of Birmingham's BlueBEAR HPC service, which provides a High Performance Computing service to the University's research community. See `http://www.birmingham.ac.uk/bear` for more details.*
-
 **version 23/09/2021**
 
 ---
 
 ## References
-
-
 
 [1] Huang K, Altosaar J, Ranganath R. Clinicalbert: Modeling clinical notes and predicting hospital readmission. arXiv preprint arXiv:1904.05342. 2019.
 
@@ -79,5 +77,4 @@ If I find out this is being abused, I will make repository private/remove script
 [8] Pendleton SC, Slater LT, Karwath A, Gilbert RM, Davis N, Pesudovs K, Liu X, Denniston AK, Gkoutos GV, Braithwaite T. Development and application of the ocular immune-mediated inflammatory diseases ontology enhanced with synonyms from online patient support forum conversation. Computers in biology and medicine. 2021 135:104542.
 
 [9] Thompson SJ, Thompson SE, Cazier JB. CaStLeS (Compute and Storage for the Life Sciences): a collection of compute and storage resources for supporting research at the University of Birmingham. Zenodo. 2019 Jun 20.
-
 
