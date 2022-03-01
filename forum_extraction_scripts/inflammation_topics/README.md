@@ -1,3 +1,7 @@
-* **saturday 16th may 2020** <- forum extraction occured using the list of forum topics provided in the `topics.tsv`
+# README
 
-* to recreate results, use this file for the forum extraction scripts
+* **17th october 2021** <- forum extraction occured
+
+* the **14 inflammatory** forum topics provided in the `topics_interest.tsv`
+
+* **Additional**: the `topics.tsv` includes the original 24 inflammatory topics of interest.

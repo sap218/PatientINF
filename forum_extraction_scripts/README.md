@@ -2,7 +2,7 @@
 
 **version 10/02/2020** - works as of this date, in future website may change and so the script might not work!
 
-**note** data files provided are examples, see `/inflammation_topics` for the inflammatory conditions list used for the models (includes the date of extraction for models)
+**note** data files provided are examples, see `/inflammation_topics` for the 14 inflammatory conditions list used for the models (includes the date of extraction for models)
 
 1. edit `chosen_topics.tsv` with the forum topics and links you want to extract, two forum examples already provided
 2. run `top-level.py`, which will export `chosen_topics_links.json` - these will include all the thread links for your desired forums
