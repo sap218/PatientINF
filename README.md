@@ -1,4 +1,4 @@
-# PatientFORUM
+# PatientINF
 
 **>> see [Website](https://sap218.github.io/patientFORUM) for more information about the project**
 
@@ -7,6 +7,8 @@
 | `PI` | PatientINF | [Patient.info](https://patient.info/forums) forum board |
 | `CB` | ClinicalBERT | [ClinicalBERT](https://github.com/kexinhuang12345/clinicalBERT) [1] |
 | `mBR` | (modified) BioReddit | [COMETA](https://github.com/cambridgeltl/cometa) corpus [2] |
+
+**>> see HuggingFace for the [PatientINF](https://huggingface.co/sap218/PatientINF) CB+PI model**
 
 ## Brief Overview
 
